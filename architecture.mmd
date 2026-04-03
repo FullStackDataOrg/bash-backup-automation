@@ -1,0 +1,7 @@
+graph TD
+  A[cron Job\nDaily at midnight] --> B[backup.sh]
+  B --> C{find: files modified\nin last 24 hours?}
+  C -->|Yes| D[Copy to /backups/YYYY-MM-DD/]
+  C -->|No| E[Skip]
+  D --> F[tar + gzip\nCreate .tar.gz archive]
+  F --> G[Log entry\nbackup.log]
